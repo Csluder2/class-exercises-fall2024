@@ -1,4 +1,4 @@
-'''
+"""
 PLEASE READ CAREFULLY
 
 1. BACKGROUND / SET-UP
@@ -34,24 +34,36 @@ To run these tests, issue the following command on the CLI
     python3 run_tests_framework.py --verbose
 
 Good luck!
-'''
-
+"""
 
 import unittest
+
 from your_task import hello_world, rps
 
 
 class TestStringMethods(unittest.TestCase):
 
     def test_hello_world(self):
-        self.assertEqual(hello_world(), 'Hello world!')
+        self.assertEqual(hello_world(), "Hello world!")
 
     def test_paper_beats_rock(self):
-        self.assertEqual(rps('rock', 'paper'), 'Paper wins!')
-        self.assertEqual(rps('paper', 'rock'), 'Paper wins!')
+        self.assertEqual(rps("rock", "paper"), "Paper wins!")
+        self.assertEqual(rps("paper", "rock"), "Paper wins!")
 
     # add additional tests below
+    def test_scissor_beats_paper(self):
+        self.assertEqual(rps("paper", "scissor"), "Scissor wins!")
+        self.assertEqual(rps("scissor", "paper"), "Scissor wins!")
+
+    def test_rock_beats_scissor(self):
+        self.assertEqual(rps("scissor", "rock"), "Rock wins!")
+        self.assertEqual(rps("rock", "scissor"), "Rock wins!")
+
+    def test_hand1_equals_hand2(self):
+        self.assertEqual(rps("scissor", "scissor"), "Tie!")
+        self.assertEqual(rps("rock", "rock"), "Tie!")
+        self.assertEqual(rps("paper", "paper"), "Tie!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
