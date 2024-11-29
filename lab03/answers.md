@@ -5,35 +5,64 @@
 ### 1.1. List the contents of the lab03-exercises repo immediately after initialization
 ```
 # paste code here
-
+drwxrwxrwx 1 root root 4096 Sep  5 10:58 .
+drwxrwxrwx 1 root root 4096 Sep  5 10:36 ..
+drwxrwxrwx 1 root root 4096 Sep  5 10:58 .git
+-rwxrwxrwx 1 root root   27 Sep  5 10:40 README.md
 
 ```
 
 ### 1.2. Paste the output of your `git status` command
 ```
 # paste code here
+git status
+On branch main
 
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
 
 ```
 
 ### 1.3. Paste the output of the state of your repository after committing your README.md file
 ```
 # paste code here
-
+git status
+On branch main
+nothing to commit, working tree clean
 
 ```
 
 ### 1.4. Copy your `git log` output
 ```
 # paste code here
+git log 
+commit fc6356579ed42b06e5c8d2b6b626773ce8896722 (HEAD -> main)
+Author: root <root@ChristiansCPU>
+Date:   Thu Sep 5 11:31:53 2024 -0400
 
+    add README.md to the repository
 
 ```
 
 ### 1.5. Copy your `git diff` output
 ```
 # paste code here
-
+diff --git a/README.md b/README.md
+index 9a8d849..cff67cd 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,3 @@
+-# Hello, this is my header!
+\ No newline at end of file
++# Hello, this is my header!
++# Find All Duplicates
++# Write a function (or static method in the case of Java) that accepts a list of integers and returns a list of only those integers that appear more than once.
+\ No newline at end of file
 
 ```
 
@@ -42,12 +71,12 @@
 
 We've learned 6 git subcommands now. Describe each of them in your own words in the section below:
 
-* git init
-* git status 
-* git add 
-* git commit 
-* git log 
-* git diff 
+* git init - Initializes a git repository in the current directory. 
+* git status - says current branch, and staged files, as well as committed files. 
+* git add - adds files to the staging area for commiting 
+* git commit - records staged changes to files that were added to the staging area. 
+* git log - Lists your history of commits. 
+* git diff - Says what is different with each commit vs its original. 
 
 
 ### 1.7. Practice: Find All Duplicates (Java)
@@ -70,9 +99,14 @@ Please make sure that the new repo that you made today on GitHub is public, and 
 
 ```bash
 # paste your new repo link here...
-
+https://github.com/Csluder2/lab03-exercises
 ```
 
 ### 3.3. What do the three "Merge pull request" options mean? 
 Describe each of them in your own words.
+Create a merge commit: 
+Preserves full history with a single commit, makes it more complicated due to keeping everything. 
+Squash and merge:
+Reduces number of commits, but loses commit history within the pull request. History is cleaner because of this. 
+Rebase and merge: Brings commits from pull requests onto base branch, by a fast forward merge. There can be some conflicts from this method
 
