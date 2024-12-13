@@ -22,11 +22,29 @@ export default function CourseSearchForm({ fetchCourses }) {
         { key: "service", value: "Service Learning" },
     ];
 
+    const [departments, setDepartments] = useState([]); // State to store department data
+
+    // Fetch departments when the component mounts
+    useEffect(() => {
+        const fetchDepartments = async () => {
+            try {
+                const response = await fetch("/api/departments");
+                if (!response.ok) {
+                    throw new Error("Failed to fetch departments");
+                }
+                const data = await response.json();
+                setDepartments(data); // Update state with department data
+            } catch (error) {
+                console.error("Error fetching departments:", error);
+            }
+        };
+
+        fetchDepartments();
+    }, []); // Empty dependency array ensures this runs once on mount
+
     const handleFormSubmit = (formData) => {
         console.log("Here's the form data:", formData);
-        // fetchCourses is a function defined in the parent component (App.jsx).
-        // It was passed into this component as a prop.
-        fetchCourses(formData);
+        fetchCourses(formData); // Call fetchCourses passed from the parent component
     };
 
     return (
@@ -72,19 +90,11 @@ export default function CourseSearchForm({ fetchCourses }) {
                     <Form.Item label="Department" name="department">
                         <Select>
                             <Select.Option value="">Any</Select.Option>
-
-                            {/* React Task 2:
-                                replace these hardcoded ones with ones 
-                                that are coming from the /api/departments endpoint. 
-                                You will need to use the useEffect and useState React 
-                                functions. 
-                            */}
-                            <Select.Option key="CSCI" value="CSCI">
-                                CSCI
-                            </Select.Option>
-                            <Select.Option key="NM" value="NM">
-                                NM
-                            </Select.Option>
+                            {departments.map((dept) => (
+            <Select.Option key={dept} value={dept}>
+                {dept}
+            </Select.Option>
+        ))}
                         </Select>
                     </Form.Item>
 
@@ -141,3 +151,4 @@ export default function CourseSearchForm({ fetchCourses }) {
         </Form>
     );
 }
+

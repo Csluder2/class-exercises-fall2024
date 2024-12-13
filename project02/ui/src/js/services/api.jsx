@@ -4,13 +4,15 @@ const rootURL = "http://localhost:8000";
 export async function fetchUser(username) {
     // replace this code with functionality that actually
     // queries that correct endpoint:
-    return {
-        id: 18,
-        username: "svanwart",
-        email: "svanwart@unca.edu",
-        first_name: "Sarah",
-        last_name: "Van Wart",
-    };
+    const response = await fetch(`/api/users/${username}`, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+      },
+        
+    });
+    const user = await response.json();
+    return user; 
 }
 
 // React Task 3:
